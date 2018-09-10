@@ -2,9 +2,10 @@
 
 class Customer 
 {
-    protected $fname;
-    protected $lname;
-    protected $age;
+    private $id;
+    public $fname;
+    public $lname;
+    public $age;
     function __construct($fname,$lname,$age)
     {
         $this->fname = $fname;

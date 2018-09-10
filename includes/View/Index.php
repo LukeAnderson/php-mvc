@@ -1,23 +1,19 @@
 <?php
 
 #use controller
-require_once("../Controller/Customer.php");
+require_once("../Controller/CustomerController.php");
 
 #get model
 $model = IndexModel();
 
-AddCustomer($model);
-
 #set layout variables
 $pageTitle = "Home";
 $body = <<<EOD
-<body>
+<body class="layout-body">
 
     <p>hello $pageTitle</p>
 
     <p>The model is $model</p>
-
-
 
 </body>
 EOD;

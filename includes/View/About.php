@@ -3,7 +3,7 @@
 #set layout variables
 $pageTitle = "About";
 $body = <<<EOD
-<body>
+<body class="layout-body">
 
     <p>hello $pageTitle</p>
 

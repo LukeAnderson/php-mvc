@@ -14,13 +14,69 @@ if ($conn->connect_error) {
     $conn->close();
 } 
 
-
+#gets the model for the index view.
 function IndexModel()
 {
     $customer = new Customer("Luke","Anderson",18);	
     return $customer;
 }
 
+#gets the model for the View-Users view.
+function ViewUsersModel()
+{
+    global $conn;
+
+    $SQL = "SELECT * FROM customer";
+    $stmt = $conn->prepare($SQL);
+
+
+    if (!$stmt->execute()) 
+    {
+        echo "falure to execute SQL to to get all customers";
+    } 
+
+    $result = $stmt->get_result();
+
+    $customers = array();
+    $params = array('fname','lname','age');
+
+
+    while ($obj = mysqli_fetch_object($result))
+    {
+        $customer = new Customer($obj->fname,$obj->lname,$obj->age);
+        array_push($customers,$customer);
+    }
+
+
+
+
+
+
+    
+    $stmt->close();
+    $conn->close();
+
+
+    return $customers;
+
+
+
+}
+
+
+function makeCustomerObject($id,$fname,$lname,$age)
+{
+
+
+
+
+}
+
+
+
+
+
+#adds a customer to the mySql database
 function AddCustomer($customer)
 {
     global $conn;
@@ -72,8 +128,6 @@ function AddCustomer($customer)
     However mysqli_real_escape_string is not 100% safe against SQL injection.
     You have to use something like a strict whitelist to be sure you are secure in preventing SQL injection.
     */
-
-
 
 
 }
